@@ -1,0 +1,78 @@
+noonastock_homepage:
+    path:     /{page}
+    defaults: { _controller: NoonaStockBundle:Stock:index , page:1 }
+    requirements:
+              page:  \d+
+
+noonastock_voirProduitInfo:
+    path:     /voirProduit/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:voirProduitInfo }
+
+noonastock_ajouterProduits:
+    path:     /ajouterProduits
+    defaults: { _controller: NoonaStockBundle:Stock:ajouterProduits }
+
+noonastock_modifierProduit:
+    path:     /modifierProduit/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:modifierProduit }
+
+noonastock_effacerProduit:
+    path:     /effacerProduit/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:effacerProduit }
+
+noonastock_modifierReassort:
+    path:     /modifierReassort/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:modifierReassort }
+
+noonastock_ajouterReassort:
+    path:     /ajouterReassort
+    defaults: { _controller: NoonaStockBundle:Stock:ajouterReassort }
+
+noonastock_effacerReassort:
+    path:     /effacerReassort/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:effacerReassort }
+
+noonastock_voirReassorts:
+    path:     /reassorts/{page}
+    defaults: { _controller: NoonaStockBundle:Stock:voirReassort, page:1 }
+    requirements:
+             page: \d+
+
+
+noonastock_voirReassortInfo:
+    path:    /reassortInfo/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:voirReassortInfo}
+
+noonastock_produitXml:
+    path:    /exporterExcel
+    defaults: { _controller: NoonaStockBundle:Stock:produitXml}
+
+noonastock_voirVentes:
+    path:     /ventes/{page}
+    defaults: { _controller: NoonaStockBundle:Stock:voirVentes, page:1 }
+    requirements:
+             page : \d+
+
+noonastock_voirVenteInfo:
+    path:    /venteInfo/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:voirVenteInfo}
+
+noonastock_ajouterVente:
+    path:     /ajouterVente
+    defaults: { _controller: NoonaStockBundle:Stock:ajouterVente }
+
+noonastock_modifierVente:
+    path:     /modifierVente/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:modifierVente }
+
+noonastock_effacerVente:
+    path:     /effacerVente/{id}
+    defaults: { _controller: NoonaStockBundle:Stock:effacerVente }
+
+noonastock_rechercheProduit:
+    path:     /recherche
+    defaults: { _controller: NoonaStockBundle:Stock:rechercheProduit }
+
+noonastock_test:
+    path:     /test
+    defaults: { _controller: NoonaStockBundle:Stock:test}

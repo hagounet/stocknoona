@@ -1,0 +1,37 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+
+    <h3>Modifier vente</h3>
+
+<form id="formEditVenteProduits" class="" method="post">
+
+        <div id="form_vente_line">
+
+            <div id="vente_date">
+                {{ form_label(form.dateVente) }}
+                {{ form_widget(form.dateVente) }}
+                {{ form_errors(form.dateVente) }}
+            </div>
+
+            <div id="vente_coutsDivers">
+                {{ form_label(form.coutsDivers) }}
+                {{ form_widget(form.coutsDivers) }}
+                {{ form_errors(form.coutsDivers) }}
+            </div>
+       </div>
+
+        {{ form_rest(form) }}
+
+    <input id="submitModifierVente" type="submit" class="btn btn-primary" value="Envoyer formulaire" />
+
+
+
+</form>
+
+
+
+
+{% endblock %}
+
+

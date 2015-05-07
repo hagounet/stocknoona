@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/main_front.css') }}"/>
+{% endblock %}
+{% block body %}
+
+    <header>
+        <h1 id="noona_title">Noona- Gestion de stock</h1>
+    </header>
+
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        {% block footerLink %}
+            <a href="{{ path('noonastock_homepage') }}">Retour à l'accueil</a>
+        {% endblock %}
+
+    </footer>
+{% endblock %}

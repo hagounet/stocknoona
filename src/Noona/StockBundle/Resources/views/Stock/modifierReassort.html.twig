@@ -1,0 +1,37 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+
+    <h3>Modifier réassort</h3>
+
+<form id="formEditReassortProduits" class="" method="post">
+
+        <div id="form_reassort_line">
+
+            <div id="reassort_date">
+                {{ form_label(form.dateReassort) }}
+                {{ form_widget(form.dateReassort) }}
+                {{ form_errors(form.dateReassort) }}
+            </div>
+
+            <div id="reassort_coutsDivers">
+                {{ form_label(form.coutsDivers) }}
+                {{ form_widget(form.coutsDivers) }}
+                {{ form_errors(form.coutsDivers) }}
+            </div>
+       </div>
+
+        {{ form_rest(form) }}
+
+    <input id="submitModifierReassort" type="submit" class="btn btn-primary" value="Envoyer formulaire" />
+
+
+
+</form>
+
+
+
+
+{% endblock %}
+
+

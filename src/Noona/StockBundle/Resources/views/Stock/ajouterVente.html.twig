@@ -1,0 +1,125 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+
+    <h3>Ajout vente</h3>
+
+<form id="formVenteProduits" class="" method="post">
+
+        <div id="form_vente_line">
+
+
+
+            <div id="vente_date">
+                {{ form_label(form.dateVente) }}
+                {{ form_widget(form.dateVente) }}
+                {{ form_errors(form.dateVente) }}
+            </div>
+
+            <div id="vente_coutsDivers">
+                {{ form_label(form.coutsDivers) }}
+                {{ form_widget(form.coutsDivers) }}
+                {{ form_errors(form.coutsDivers) }}
+            </div>
+       </div>
+
+        {{ form_rest(form) }}
+    
+    <button id="nouveauProduit" class="btn btn-primary">Ajouter un produit</button>
+    <input id="submitAjoutProduit" type="submit" class="btn btn-primary" value="Envoyer formulaire" />
+    
+    </form>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+
+
+            var $container = $('#noona_stockbundle_vente_venteProduits');
+
+
+
+            // On ajoute un lien pour ajouter une nouvelle catégorie
+
+            var $lienAjout = $('#nouveauProduit');
+
+            // On ajoute un nouveau champ à chaque clic sur le lien d'ajout
+
+            $lienAjout.click(function(e) {
+                ajouterProduit($container);
+                e.preventDefault();
+                return false;
+            });
+
+            // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+
+            var index = $container.find(':input').length;
+
+            // On ajoute un premier champ directement s'il n'en existe pas déjà un (cas d'un nouvel article par exemple)
+
+            if (index == 0) {
+                ajouterProduit($container);
+            } else {
+                // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+                var n = 0;
+                $container.children('div').each(function() {
+                    $(this).children('label')[0].innerHTML = 'produit n° '+(n+1);
+                    ajouterLienSuppression($(this));
+                    $(this).addClass("form-group");
+                    n++;
+                });
+            }
+            // La fonction qui ajoute un formulaire Categorie
+
+            function ajouterProduit($container) {
+
+                // Dans le contenu de l'attribut « data-prototype »,
+                // on remplace :le texte "__name__label__" qu'il contient par le label du champ
+                // - le texte "__name__" qu'il contient par le numéro du champ
+
+                var $prototype = $($container.attr('data-prototype')
+                        .replace(/__name__label__/g, 'Produit n° ' + (index+1))
+                        .replace(/__name__/g, index))
+                        .addClass('form-group');
+                $($prototype.find(':input')[1]).val(0);
+                $($prototype.find(':input')[2]).val(0);
+                // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+
+                ajouterLienSuppression($prototype);
+
+
+                // On ajoute le prototype modifié à la fin de la balise <div>
+
+                $container.append($prototype);
+                // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+
+                index++;
+            }
+            // La fonction qui ajoute un lien de suppression d'une catégorie
+
+            function ajouterLienSuppression($prototype) {
+                // Création du lien
+                $lienSuppression = $('<a href="#" class="btn btn-danger boutonSupprimer vente_bouton_supprimer">Supprimer</a>');
+
+                // Ajout du lien
+                $prototype.append($lienSuppression);
+
+                // Ajout du listener sur le clic du lien
+                $lienSuppression.click(function(e) {
+                    $prototype.remove();
+                    e.preventDefault();
+                    return false;
+                });
+            }
+
+        });
+
+    </script>
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,58 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+<h3>Liste réassorts</h3>
+
+        <div class="list-group">
+        {% for reassort in liste_reassorts %}
+            <div id="reassort{{ reassort.id }}" class="v_reassort_line list-group-item" href="#">
+                <a class="pull-right btn btn-warning" href="{{ path('noonastock_effacerReassort',{id:reassort.id}) }}" onclick="return confirm('Cette action est irréversible. Tu es sure?')">Supprimer</a>
+                <div>Date de réassort: {{ reassort.dateReassort | date("d/m/Y") }}</div>
+                <div>Coûts divers: {{ reassort.coutsDivers }}€</div>
+                <div class="total_td">Coût total: {{ reassort.totalPrice }}€</div>
+                <div class="info-reassort-container" ><a href="#" class="info-reassort-deploy">Détails supplémentaires</a></div>
+            </div>
+
+        {% endfor %}
+        </div>
+
+    {% if nbrPages > 1 %}
+        <ul class="pagination">
+            {% for i in 1..nbrPages %}
+                <li>
+                    <a class="pagination" href="{{path('noonastock_voirReassorts',{page:i}) }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('.info-reassort-deploy').click(function(e){
+
+            var reassort_id = $(this).parents('.v_reassort_line')[0].id.replace('reassort','');
+            var path = '{{ path("noonastock_voirReassortInfo", {"id" : "reassort_id"} ) }}';
+            var route = path.replace("reassort_id", reassort_id);
+
+            $.ajax({
+                url : route,
+                type : 'GET',
+                dataType:'text',
+                success : function(result, statut){ // success est toujours en place, bien sûr !
+
+                    $(e.currentTarget).parent().html($(result));
+                },
+                error : function(resultat, statut, erreur){
+
+                }
+            });
+            e.preventDefault();
+        });
+
+    </script>
+
+
+{% endblock %}

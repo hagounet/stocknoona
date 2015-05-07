@@ -1,0 +1,160 @@
+header{padding:20px 0 0 20px; height: 100px;background-color: #444444;color: #ffffff;margin-bottom: 40px}
+
+#noona_title{margin: 0}
+
+button a{color: #fff;}
+
+footer{height: 50px;background-color: #444444;color: #ffffff;text-align: center;padding-top:13px}
+footer a{color: #ffffff;text-decoration: none; font-size: 16px;text-transform: capitalize}
+footer a:hover{color: #286090;text-decoration: underline}
+
+
+.search-btn
+{
+    background-color:transparent;
+    height: 28px;width: 28px;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {vertical-align: middle;text-align: center}
+
+.pagination > li > a, .pagination > li > span{border: 1px solid grey;}
+#content{padding: 20px}
+
+#i-info-benefice{text-align: center;font-weight: bold;margin: 20px 0;padding: 20px;background-color: white;color: #2B3E50;}
+.referenceTab{text-transform: uppercase;}
+
+
+#nouveauProduit,#submitAjoutProduit{display: inline-block;vertical-align: top;margin:30px 10px 0 30px}
+
+#produit-search-bar{
+    text-align: right;
+}
+
+/* form ajout produit*/
+
+#formAjoutProduits .form-group{border: solid 1px darkgoldenrod; padding: 20px}
+#formAjoutProduits label{display: block}
+#formAjoutProduits .form-group{margin-top: 30px;}
+#formAjoutProduits .boutonSupprimer{margin-top: 20px}
+
+/*form réassort*/
+
+#form_reassort_line{color: #ffffff;background-color: #5e5e5e;padding: 8px 10px;margin-bottom: 50px}
+#form_reassort_line input,  #formReassortProduits select{color: #000000;}
+#form_reassort_line > div + div{margin-left: 50px;}
+#form_reassort_line div,#form_reassort_line label{display: inline-block; vertical-align: middle;}
+#reassort_coutsDivers input{width: 100px;}
+#noona_stockbundle_reassort_reassortProduits .form-group div{display: inline-block;vertical-align: middle}
+#noona_stockbundle_reassort_reassortProduits .reassort_bouton_supprimer{margin-left: 15px;}
+#noona_stockbundle_reassort_reassortProduits label{margin: 0 15px ;}
+
+/*voir réassort*/
+.v_reassort_line.list-group-item:hover{
+  background-color: #DF691A;
+}
+.v_reassort_line.list-group-item{border: 1px solid grey;margin-bottom: 5px;}
+
+.info-reassort-deploy{background-color: #ffffff; padding: 20px;}
+
+/*info réassort*/
+.infoReassort{
+    background-color: #ffffff;
+    margin: 20px -10px -5px -10px;
+    padding: 20px;
+}
+
+.info-reassort-container{
+    margin-top: 20px;
+}
+
+.info-reassort-deploy{
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+}
+.infoReassort .btn{
+    margin-bottom: 20px;
+}
+.info-reassort-line{
+    margin-bottom: 20px;
+}
+.info-reassort-line span + span{
+    margin-left: 100px;
+}
+
+/* form excel produit*/
+
+#f-exportExcel .form-group{border: solid 1px darkgoldenrod; padding: 20px}
+#f-exportExcel label{display: block}
+#f-exportExcel .form-group{margin-top: 30px;}
+#f-exportExcel .boutonSupprimer{margin-top: 20px}
+#f-exportExcel select{color: #2b3e50}
+
+/*edit reassort*/
+
+#formEditReassortProduits #noona_stockbundle_reassort_reassortProduits
+{
+    display: none;
+}
+#formEditReassortProduits select{
+    color: #2b3e50;
+}
+
+/*edit vente*/
+
+#formEditVenteProduits #noona_stockbundle_vente_venteProduits
+{
+    display: none;
+}
+#formEditVenteProduits select{
+    color: #2b3e50;
+}
+
+
+/*form vente*/
+
+#form_vente_line{color: #ffffff;background-color: #5e5e5e;padding: 8px 10px;margin-bottom: 50px}
+#form_vente_line input,  #formVenteProduits select{color: #000000;}
+#form_vente_line > div + div{margin-left: 50px;}
+#form_vente_line div,#form_vente_line label{display: inline-block; vertical-align: middle;}
+#vente_coutsDivers input{width: 100px;}
+#noona_stockbundle_vente_venteProduits .form-group div{display: inline-block;vertical-align: middle}
+#noona_stockbundle_vente_venteProduits .vente_bouton_supprimer{margin-left: 15px;}
+#noona_stockbundle_vente_venteProduits label{margin: 0 15px ;}
+
+
+
+/*voir vente*/
+.v_vente_line.list-group-item:hover{
+    background-color: #DF691A;
+}
+.v_vente_line.list-group-item{border: 1px solid grey;margin-bottom: 5px;}
+
+.info-vente-deploy{background-color: #ffffff; padding: 20px;}
+
+/*info vente*/
+
+.infoVente{
+    background-color: #ffffff;
+    margin: 20px -10px -5px -10px;
+    padding: 20px;
+}
+
+.info-vente-container{
+    margin-top: 20px;
+}
+
+.info-vente-deploy{
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+}
+.infoVente .btn{
+    margin-bottom: 20px;
+}
+.info-vente-line{
+    margin-bottom: 20px;
+}
+.info-vente-line span + span{
+    margin-left: 100px;
+}

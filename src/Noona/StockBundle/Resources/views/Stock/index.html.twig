@@ -1,0 +1,128 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+
+<div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        Connecté en tant que {{ app.user.username }}
+        -
+        <a href="{{ path('fos_user_profile_show') }}">Profil</a>
+        -
+        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+    {% endif %}
+</div><br/><br/>
+
+<a class="btn btn-primary" href="{{path('noonastock_ajouterProduits') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter produits</a>
+
+<a class="btn btn-primary" href="{{path('noonastock_ajouterReassort') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter réassorts</a>
+
+<a class="btn btn-primary" href="{{path('noonastock_ajouterVente') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter ventes</a>
+
+<a class="btn btn-primary" href="{{path('noonastock_produitXml') }}"><i class="glyphicon glyphicon-export"></i> Exporter excel</a>
+
+
+
+<h2>Inventaire</h2>
+
+<a class="btn btn-primary" href="{{ path('noonastock_voirReassorts') }}"><i class="glyphicon glyphicon-eye-open"></i> Voir tous les réassorts</a>
+<a class="btn btn-primary" href="{{ path('noonastock_voirVentes') }}"><i class="glyphicon glyphicon-eye-open"></i> Voir toutes les ventes</a>
+
+<div id="produit-search-bar">
+    <form action="{{ path('noonastock_rechercheProduit') }}" method="GET">
+        <input placeholder="rechercher un produit" name="produit" type="text" class="autocomplete"/><button type="submit" class="glyphicon glyphicon-search search-btn"></button>
+    </form>
+</div>
+
+<div class="flash-message">
+    {% for flashMessage in app.session.flashbag.get('produitDelete') %}
+
+        {{ flashMessage }}
+
+    {% endfor %}
+</div>
+
+<div id="i-info-benefice">Revenu total généré depuis le début : {{ benefice }}€</div>
+<table class="table-striped table table-hover">
+    <thead>
+    <tr>
+        <td>Photo</td>
+        <td>Référence</td>
+        <td>Disponibilité</td>
+        <td>Autres infos</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% if liste_produits|length < 1  %}
+        <div>Aucun produit à afficher</div>
+    {% endif %}
+    {% for produit in liste_produits %}
+    <tr>
+        <td><a href="{{ path('noonastock_modifierProduit',{'id':produit.id}) }}"><img style="width: 80px;height: auto" src="{{ asset(produit.image.WebPath) }}" alt="{{ produit.image.alt }}"/></a></td>
+        <td><a class="referenceTab" href="{{ path('noonastock_modifierProduit',{'id':produit.id}) }}">{{ produit.reference }}</a></td>
+        <td>{{ produit.stock }}</td>
+        <td><a id="link-product-{{ produit.id }}" href="{{ path('noonastock_voirProduitInfo',{'id':produit.id}) }}" class="glyphicon glyphicon-arrow-down o-info-index"></a></td>
+    </tr>
+
+     {% endfor %}
+
+    </tbody>
+
+
+
+
+</table>
+
+{% if nbrPages > 1 %}
+<ul class="pagination">
+    {% for i in 1..nbrPages %}
+        <li>
+            <a class="pagination" href="{{path('noonastock_homepage',{page:i}) }}">{{ i }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+{% endblock %}
+{% block footerLink %}<a href="http://www.noona-na.fr">Aller sur le site</a>{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(".o-info-index").click(function(e){
+            var produit_id = e.target.id.replace('link-product-','');
+            var path = '{{ path("noonastock_voirProduitInfo", {"id" : "produit_id"} ) }}';
+            var route = path.replace("produit_id", produit_id);
+
+            $.ajax({
+                url : route,
+                type : 'GET',
+                dataType : 'json',
+                success : function(code_json, statut){ // success est toujours en place, bien sûr !
+
+
+                    $(e.target).parent().html('' +
+                            '<div>Achetés : '+code_json.achetes+'</div>'+
+                            '<div>Vendus : '+code_json.vendus+'</div>'+
+                            '<div>Bénéfices : '+code_json.benefices+'€</div>'
+                            );
+                },
+                error : function(resultat, statut, erreur){
+
+                }
+            });
+            e.preventDefault()
+        });
+
+        var liste_autocomplete = "{{ liste_autocomplete }}";
+
+        var availableTags = liste_autocomplete.split('|');
+        $( ".autocomplete" ).autocomplete({
+            source: availableTags
+        });
+
+
+
+    </script>
+
+
+{% endblock %}

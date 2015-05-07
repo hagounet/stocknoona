@@ -1,0 +1,4 @@
+services:
+#    noonastock.example:
+#        class: Noona\stockBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

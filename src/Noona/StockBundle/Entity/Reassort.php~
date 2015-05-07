@@ -1,0 +1,122 @@
+<?php
+
+namespace Noona\StockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reassort
+ *
+ * @ORM\Table()
+ * * @ORM\Entity(repositoryClass="Noona\StockBundle\Entity\ReassortRepository")
+ */
+class Reassort
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * @var int
+     * @ORM\Column(name="coutsDivers",type="integer")
+     */
+    private $coutsDivers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Noona\StockBundle\Entity\ReassortProduit", mappedBy="reassort")
+     */
+    private $reassortProduits;
+
+    /**
+     * @param int $coutsDivers
+     */
+    public function setCoutsDivers($coutsDivers)
+    {
+        $this->coutsDivers = $coutsDivers;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCoutsDivers()
+    {
+        return $this->coutsDivers;
+    }
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalPrice", type="integer")
+     */
+    private $totalPrice;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Reassort
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set totalPrice
+     *
+     * @param integer $totalPrice
+     * @return Reassort
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return integer 
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+}

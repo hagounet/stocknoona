@@ -1,0 +1,12 @@
+<div class="infoReassort list-group">
+
+    <a class="btn-primary btn" href="{{path('noonastock_modifierReassort',{id:reassort_id})}}">Modifier</a>
+{% for reassortProduit in reassortProduits %}
+    <div class="info-reassort-line list-group-item">
+        <span>{{ reassortProduit.produit.reference }}</span>
+        <span>Quantité achetée: {{ reassortProduit.quantite }}</span>
+        <span>Coût Total: {{ reassortProduit.coutTotal }}€</span>
+
+    </div>
+{% endfor %}
+</div>

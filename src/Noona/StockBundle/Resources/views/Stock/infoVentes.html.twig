@@ -1,0 +1,13 @@
+<div class="infoVente list-group">
+
+    <a class="btn-primary btn" href="{{path('noonastock_modifierVente',{id:vente_id})}}">Modifier</a>
+
+{% for venteProduit in venteProduits %}
+    <div class="info-vente-line list-group-item">
+        <span>{{ venteProduit.produit.reference }}</span>
+        <span>Quantité achetée: {{ venteProduit.quantite }}</span>
+        <span>Revenu Total: {{ venteProduit.coutTotal }}€</span>
+
+    </div>
+{% endfor %}
+</div>

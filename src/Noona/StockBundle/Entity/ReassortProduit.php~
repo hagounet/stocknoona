@@ -1,0 +1,73 @@
+<?php
+
+namespace Noona\StockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ReassortProduit
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Noona\StockBundle\Entity\ReassortProduitRepository")
+ */
+class ReassortProduit
+{
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Noona\StockBundle\Entity\Reassort")
+     */
+
+    private $reassort;
+
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Noona\StockBundle\Entity\produit")
+     */
+
+    private $produit;
+
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cout", type="integer")
+     */
+    private $cout;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cout
+     *
+     * @param integer $cout
+     * @return ReassortProduit
+     */
+    public function setCout($cout)
+    {
+        $this->cout = $cout;
+
+        return $this;
+    }
+
+    /**
+     * Get cout
+     *
+     * @return integer 
+     */
+    public function getCout()
+    {
+        return $this->cout;
+    }
+}

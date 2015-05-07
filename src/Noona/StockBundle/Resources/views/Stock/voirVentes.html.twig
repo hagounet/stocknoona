@@ -1,0 +1,58 @@
+{% extends ':Layout:layout.html.twig' %}
+
+{% block content %}
+<h3>Liste des ventes</h3>
+
+        <div class="list-group">
+        {% for vente in liste_ventes %}
+            <div id="vente{{ vente.id }}" class="v_vente_line list-group-item" href="#">
+                <a class="pull-right btn btn-warning" href="{{ path('noonastock_effacerVente',{id:vente.id}) }}" onclick="return confirm('Cette action est irréversible. Tu es sure?')">Supprimer</a>
+                <div>Date de vente: {{ vente.dateVente | date("d/m/Y") }}</div>
+                <div>Coûts divers: {{ vente.coutsDivers }}€</div>
+                <div class="total_td">Gain: {{ vente.totalPrice }}€</div>
+                <div class="info-vente-container" ><a href="#" class="info-vente-deploy">Détails supplémentaires</a></div>
+            </div>
+
+        {% endfor %}
+        </div>
+
+    {% if nbrPages > 1 %}
+        <ul class="pagination">
+            {% for i in 1..nbrPages %}
+                <li>
+                    <a class="pagination" href="{{path('noonastock_voirVentes',{page:i}) }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('.info-vente-deploy').click(function(e){
+
+
+            var vente_id = $(this).parents('.v_vente_line')[0].id.replace('vente','');
+            var path = '{{ path("noonastock_voirVenteInfo", {"id" : "vente_id"} ) }}';
+            var route = path.replace("vente_id", vente_id);
+
+            $.ajax({
+                url : route,
+                type : 'GET',
+                dataType:'text',
+                success : function(result, statut){ // success est toujours en place, bien sûr !
+
+                    $(e.currentTarget).parent().html($(result));
+                },
+                error : function(resultat, statut, erreur){
+
+                }
+            });
+            e.preventDefault();
+        });
+
+    </script>
+
+
+{% endblock %}
