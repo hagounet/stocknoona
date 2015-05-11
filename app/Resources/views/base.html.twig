@@ -5,9 +5,16 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Noona - Gestion de Stock{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/bootswatch.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('js/jquery-ui-1.11.4.custom/jquery-ui.min.css') }}"/>
+    		
+    		{% stylesheets 
+    				'css/bootstrap.min.css'
+    				'css/bootswatch.min.css'
+    				'js/jquery-ui-1.11.4.custom/jquery-ui.min.css'
+    				 filter='cssrewrite'
+    		%}
+    		    		<link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+        
     {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>

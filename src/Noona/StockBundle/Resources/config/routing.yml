@@ -73,6 +73,3 @@ noonastock_rechercheProduit:
     path:     /recherche
     defaults: { _controller: NoonaStockBundle:Stock:rechercheProduit }
 
-noonastock_test:
-    path:     /test
-    defaults: { _controller: NoonaStockBundle:Stock:test}

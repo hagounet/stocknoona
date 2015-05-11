@@ -20,7 +20,9 @@ class AppKernel extends Kernel
             new Noona\StockBundle\NoonaStockBundle(),
             new Noona\UserBundle\NoonaUserBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle()
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \Liip\ImagineBundle\LiipImagineBundle()
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -30,6 +32,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
+            $bundles[] = new Noona\TestBundle\NoonaTestBundle();
         }
 
         return $bundles;

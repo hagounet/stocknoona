@@ -57,7 +57,10 @@
     {% endif %}
     {% for produit in liste_produits %}
     <tr>
-        <td><a href="{{ path('noonastock_modifierProduit',{'id':produit.id}) }}"><img style="width: 80px;height: auto" src="{{ asset(produit.image.WebPath) }}" alt="{{ produit.image.alt }}"/></a></td>
+        <td><a href="{{ path('noonastock_modifierProduit',{'id':produit.id}) }}">
+        			<img style="width: 80px;height: auto" src="{{ produit.image.WebPath | imagine_filter('miniature') }}" alt="{{ produit.image.alt }}"/>
+        		</a>
+        </td>
         <td><a class="referenceTab" href="{{ path('noonastock_modifierProduit',{'id':produit.id}) }}">{{ produit.reference }}</a></td>
         <td>{{ produit.stock }}</td>
         <td><a id="link-product-{{ produit.id }}" href="{{ path('noonastock_voirProduitInfo',{'id':produit.id}) }}" class="glyphicon glyphicon-arrow-down o-info-index"></a></td>

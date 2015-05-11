@@ -76,3 +76,16 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Noona\UserBundle\Entity\User
+
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        miniature:
+            quality: 80
+            filters:
+                thumbnail: { size: [80, 100], mode: outbound }

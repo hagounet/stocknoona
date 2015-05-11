@@ -30,6 +30,10 @@ footer a:hover{color: #286090;text-decoration: underline}
     text-align: right;
 }
 
+
+/*form*/
+input[type="file"]{color:white;}
+
 /* form ajout produit*/
 
 #formAjoutProduits .form-group{border: solid 1px darkgoldenrod; padding: 20px}

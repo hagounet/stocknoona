@@ -3,7 +3,6 @@
 namespace Noona\StockBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Noona\StockBundle\Entity\ExcelParser;
 use Noona\StockBundle\Entity\Image;
 use Noona\StockBundle\Entity\Produit;
 use Noona\StockBundle\Entity\Reassort;
@@ -23,7 +22,6 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 
 
 
@@ -457,7 +455,8 @@ class StockController extends Controller
                    $i++;
                   }
 
-                $produitXml = new ExcelParser($tableau);
+                $produitXml = $this->get('noona_app.excelparser');
+                $produitXml->setData($tableau);
                 //filename for download
 
                 header('Content-Disposition: attachment; filename="' .  $produitXml->getFilename() . '"');
@@ -497,11 +496,6 @@ class StockController extends Controller
         return $this->render('NoonaStockBundle:Stock:rechercheProduit.html.twig',array("liste_produits"=>$liste_produits,
                                                                               'liste_autocomplete'=>$liste_autocomplete ));
     }
-    
-    public function testAction()
-    {
-    	
-    	echo $this->container->getParameter('prefix_db');die;
-		}
+
 
 }
