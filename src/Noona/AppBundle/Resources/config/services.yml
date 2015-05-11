@@ -1,0 +1,13 @@
+# src/Noona/AppBundle/Resources/config/services.yml
+
+services:
+    noona_app.excelparser:
+        class: Noona\AppBundle\ExcelParser\ExcelParser
+
+    noona.prefixdatabase:
+            class: Noona\AppBundle\DoctrineExtension\PrefixDatabase
+            arguments: [%prefix_db%]
+            tags:
+                - { name: doctrine.event_subscriber }
+
+
