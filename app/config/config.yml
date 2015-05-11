@@ -88,4 +88,9 @@ liip_imagine:
         miniature:
             quality: 80
             filters:
-                thumbnail: { size: [80, 100], mode: outbound }
+                relative_resize: { widen: 80 }
+        middle_thumb:
+            quality: 100
+            filters:
+                relative_resize: { widen: 200 }
+                

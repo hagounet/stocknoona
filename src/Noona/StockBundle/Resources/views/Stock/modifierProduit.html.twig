@@ -5,7 +5,7 @@
 <h2>Modification de produits</h2>
 
     <a href="{{ path('noonastock_effacerProduit',{'id':form.vars.value.id}) }}" class="btn btn-primary pull-right" onclick="return confirm('Cette action est irréversible. Tu es sure?')">Supprimer fiche produit</a>
-    <img src="{{ asset(form.vars.data.image.webpath) }}" alt=""/>
+    <img src="{{ form.vars.data.image.webpath | imagine_filter('middle_thumb') }}" alt=""/>
 
     {{ form_start(form) }}
     <div class="alert-warning">{{ form_errors(form) }}</div>
