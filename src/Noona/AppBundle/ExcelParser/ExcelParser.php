@@ -1,6 +1,6 @@
 <?php
 
-namespace Noona\StockBundle\Entity;
+namespace Noona\AppBundle\ExcelParser;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,12 +12,10 @@ class ExcelParser
 {
 
     private $data;
-
     private $filename;
 
-    public function __construct($data)
+    public function __construct()
     {
-        $this->setData($data);
         $this->setFilename("noona" . date('Ymd') . ".xls");
     }
 

@@ -1,3 +1,7 @@
+noona_test:
+    resource: "@NoonaTestBundle/Resources/config/routing.yml"
+    prefix:   /test
+
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
     prefix:   /_wdt
