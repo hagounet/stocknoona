@@ -5,9 +5,10 @@ services:
         class: Noona\AppBundle\ExcelParser\ExcelParser
 
     noona.prefixdatabase:
-            class: Noona\AppBundle\DoctrineExtension\PrefixDatabase
-            arguments: [%prefix_db%]
-            tags:
-                - { name: doctrine.event_subscriber }
+        class: Noona\AppBundle\DoctrineExtension\PrefixDatabase
+        arguments: [%prefix_db%]
+        tags:
+            - { name: doctrine.event_subscriber }
+
 
 
