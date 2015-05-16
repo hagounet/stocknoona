@@ -12,7 +12,7 @@ use Symfony\Component\Debug\Debug;
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     '127.0.0.1',
     '::1',
-    '81.57.193.90 ', #clichy
+    '81.57.193.90', #clichy
     '84.233.203.226', #neweb
     '82.224.186.57' #montreuil
 
